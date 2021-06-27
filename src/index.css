@@ -8,6 +8,13 @@
 @font-face {
   font-family: 'Faible';
   font-style: normal;
+  font-weight: 500;
+  src: local('Faible'), url(/src/fonts/Faible/Faible-Medium.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Faible';
+  font-style: normal;
   font-weight: 700;
   src: local('Faible'), url(/src/fonts/Faible/Faible-Bold.otf) format('opentype');
 }
@@ -61,7 +68,7 @@ a{
 }
 
 header{
-  padding: 47px 0 20px;
+  padding: 47px 28px 20px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -75,10 +82,7 @@ header.scrolled{
 
 .banner-section{
   margin-top: 167px;
-}
-
-.container{
-  padding: 0px 28px;
+  padding: 0 28px;
 }
 
 h1{
@@ -121,6 +125,10 @@ img{
   transition: all ease-in-out .5s;
 }
 
+.menu li:hover a{
+  color: var(--orange);
+}
+
 .menu.active{
   opacity: 1;
 }
@@ -145,6 +153,10 @@ img{
   font-size: 1rem;
   font-weight: 700;
   line-height: 1;
+}
+
+.btn:hover{
+  background-color: var(--green);
 }
 
 header .container{
@@ -231,6 +243,10 @@ header .container{
   position: relative;
 }
 
+.pin-desktop{
+  display: none;
+}
+
 .profile-card{
   background-color: var(--white);
   box-shadow: 0px 12px 24px 0px rgb(0, 0, 0, .8);
@@ -284,9 +300,225 @@ header .container{
   margin-top: 42px;
 }
 
+.line-desktop{
+  display: none;
+}
+
 @media all and (min-width:800px){
-  
+  .container{
+    margin: auto;
+    max-width: 1280px;
+    padding: 0;
+  }
+
+  header ,
+  .banner-section{
+    padding: 0 10px;
+  }
+
+  header{
+    padding-top: 32px;
+    padding-bottom: 20px;
+  }
+
+  .banner-section{
+    margin-top: 217px;
+  }
+
+  .col-right{
+    gap: 54.5px;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   .menu{
+    width: 75%;
+    display: block;
+    position: relative;
+    top: 0;
+    opacity: 1;
+    background: none;
+  }
+
+  .menu ul{
     display: flex;
+    gap: 54.5px;
+    justify-content: flex-end;
+  }
+
+  .mobile-menu-icon,
+  .line-mobile{
+    display: none;
+  }
+
+  .line-desktop,
+  .pin-desktop{
+    display: block;
+  }
+
+  .banner-section .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: dense;
+  }
+
+  .col-1{
+    grid-column: 2/3;
+  }
+
+  .col-2{
+    grid-column: 1/2;
+    position: relative;
+  }
+
+  .big-card-profile{
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 416px;
+    margin: auto;
+    gap: 16px;
+  }
+
+  .big-card-profile .name{
+    font-size: 1.25rem;
+  }
+
+  .big-card-profile .job-title{
+    font-size: 1.063rem;
+  }
+
+  .profile-wrap{
+    position: absolute;
+    width: 100%;
+  }
+
+  .profile-text .name{
+    font-size: 1.063rem;
+  }
+
+  .profile-text .job-title{
+    color: rgba(0, 78, 76, 0.8);
+    font-weight: 500;
+  }
+
+  .profile-card{
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.08);
+    max-width: 146px;
+  }
+
+  .profile-card img{
+    padding: 8px 8px 0px 8px;
+  }
+
+  .card-1{
+    top: 50px;
+    right: 54px;
+    left: auto;
+  }
+
+  .card-2{
+    left: 54px;
+    top: 188px;
+  }
+
+  .card-3{
+    top: 345px;
+    right: 0px;
+  }
+
+  .text-content h1{
+    font-size: 6.125rem;
+    max-width: 582px;
+    margin-left: auto;
+    margin-bottom: 217px;
+  }
+
+  .text-content h1 span{
+    font-size: 1.875rem;
+    line-height: 1.4;
+  }
+
+  .text-content p{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 351px;
+    font-size: 1.25rem;
+  }
+
+  .text-content p strong{
+    font-size: 1.25rem;
+  }
+
+  .pin1{
+    max-width: 49px;
+    position: absolute;
+    right: 30px;
+    top: 268px;
+  }
+
+  .pin2{
+    max-width: 39px;
+    left: 54px;
+    position: absolute;
+    top: 100px;
+  }
+
+  .bg-image{
+    margin-top: -250px;
+    margin-right: -100px;
+  }
+}
+
+@media all and (min-width:801px) and (max-width:1100px){
+  header{
+    padding: 20px 10px;
+  }
+
+  .col-right{
+    gap: 16px;
+  }
+
+  .menu ul{
+    gap: 16px;
+  }
+
+  .text-content h1{
+    font-size: 4.375rem;
+  }
+
+  .text-content p{
+    padding-left: 60px;
+  }
+
+  .big-card-profile{
+    width: 75%;
+  }
+
+  .pin1{
+    right: 0;
+  }
+
+  .pin2{
+    left: 0;
+  }
+
+  .card-1{
+    right: 20px;
+  }
+
+  .card-2{
+    left: 10px;
+  }
+
+  .card-3{
+    top: 320px;
+    right: 10px;
+  }
+
+  .line-desktop{
+    z-index: -1;
+    position: relative;
   }
 }

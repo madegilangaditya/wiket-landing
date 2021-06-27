@@ -2,19 +2,23 @@ import florist from '../jpg/header-img-florist.jpg'
 import gardener from '../jpg/header-img-gardener.jpg'
 import pottery from '../jpg/header-img-pottery.jpg'
 import barista from '../jpg/header-img-barista.jpg'
-import line from '..//svg/header-line-phone-portrait.svg'
+import line from '../svg/header-line-phone-portrait.svg'
+import line2 from '../svg/header-line-desktop.svg'
+import pin1 from '../svg/pin-01.svg'
+import pin2 from '../svg/pin-02.svg'
+import { motion } from "framer-motion"
 
 const Banner = () => {
     return (
         <div className="banner-section">
             <div className="container">
-                <div className="col">
+                <div className="col col-1">
                     <div className="text-content">
                         <h1><span className="subtitle">Explore new opportunities. </span><strong>Grow</strong> your business.</h1>
                         <p><strong>Wiket is the first business to business network</strong> which lets you connect to mind like people.</p>
                     </div>
                 </div>
-                <div className="col">
+                <div className="col col-2">
                     <div className="big-card-profile">
                         <div className="profile-text">
                             <p className="name">Hanging Garden</p>
@@ -23,6 +27,8 @@ const Banner = () => {
                         <img src={florist} alt="Florist" />
                     </div>
                     <div className="profile-wrap">
+                        <img src={pin1} alt="" className="pin-desktop pin1" />
+                        <img src={pin2} alt="" className="pin-desktop pin2" />
                         <div className="profile-card card-1">
                             <img src={pottery} alt="Pottery" />
                             <div className="profile-text">
@@ -46,7 +52,8 @@ const Banner = () => {
                         </div>
                     </div>
                     <div className="bg-image">
-                        <img src={line} alt="Line" />
+                        <img className="line-mobile" src={line} alt="Line" />
+                        <img className="line-desktop" src={line2} alt="Line" />
                     </div>
                 </div>
             </div>
