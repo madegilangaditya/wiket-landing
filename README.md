@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Links
 
-Here is the link for my site: [https://lucid-lovelace-a96d63.netlify.app/] https://lucid-lovelace-a96d63.netlify.app/
+Here is the link for my site: https://lucid-lovelace-a96d63.netlify.app/
 
 ## Available Scripts
 
