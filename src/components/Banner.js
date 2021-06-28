@@ -7,49 +7,89 @@ import line2 from '../svg/header-line-desktop.svg'
 import pin1 from '../svg/pin-01.svg'
 import pin2 from '../svg/pin-02.svg'
 import { motion } from "framer-motion"
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
+import { useAnimation } from 'framer-motion'
 
 const Banner = () => {
+
+    const {ref, inView} = useInView({
+        threshold:0.4
+    })
+    const animation = useAnimation()
+
+    useEffect(() => {
+        if (inView){
+            animation.start({
+                y: 0, 
+                opacity:1,
+                transition:{
+                    duration:1
+                }
+            })
+        }
+        if(!inView){
+            animation.start({
+                y: 100, 
+                opacity:0
+            })
+        }
+    }, [inView, animation])
+
     return (
-        <div className="banner-section">
+        <motion.div className="banner-section"
+        initial={{ opacity:0}}
+        animate={{ opacity:1 }}
+        transition={{ duration: .8 }}>
             <div className="container">
                 <div className="col col-1">
                     <div className="text-content">
-                        <h1><span className="subtitle">Explore new opportunities. </span><strong>Grow</strong> your business.</h1>
-                        <p><strong>Wiket is the first business to business network</strong> which lets you connect to mind like people.</p>
+                        <motion.h1 
+                            initial={{y:100, opacity:0}}
+                            animate={{ y: 0, opacity:1 }}
+                            transition={{ duration: .8 }}>
+                            <span className="subtitle">Explore new opportunities. </span><strong>Grow</strong> your business.
+                        </motion.h1>
+                        <motion.p initial={{y:100, opacity:0}}
+                            animate={{ y: 0, opacity:1 }}
+                            transition={{ duration: 1 }}><strong>Wiket is the first business to business network</strong> which lets you connect to mind like people.</motion.p>
                     </div>
                 </div>
-                <div className="col col-2">
-                    <div className="big-card-profile">
+                <div ref= {ref} className="col col-2">
+                    <motion.div className="big-card-profile" initial={{y:100, opacity:0}}
+                            animate={{ y: 0, opacity:1 }}
+                            transition={{ duration: 1 }}>
                         <div className="profile-text">
                             <p className="name">Hanging Garden</p>
                             <p className="job-title">Florist in Bangkok</p>
                         </div>
                         <img src={florist} alt="Florist" />
-                    </div>
+                    </motion.div>
                     <div className="profile-wrap">
                         <img src={pin1} alt="" className="pin-desktop pin1" />
                         <img src={pin2} alt="" className="pin-desktop pin2" />
-                        <div className="profile-card card-1">
+                        <motion.div className="profile-card card-1" 
+                            animate={animation}>
                             <img src={pottery} alt="Pottery" />
                             <div className="profile-text">
                                 <p className="name">Potject</p>
                                 <p className="job-title">Pottery in Bangkok</p>
                             </div>
-                        </div>
-                        <div className="profile-card card-2">
+                        </motion.div>
+                        <motion.div animate={animation} className="profile-card card-2">
                             <img src={gardener} alt="Gardener" />
                             <div className="profile-text">
                                 <p className="name">GreenThumb</p>
                                 <p className="job-title">Gardener in CheChe</p>
                             </div>
-                        </div>
-                        <div className="profile-card card-3">
+                        </motion.div>
+                        <motion.div animate={animation} className="profile-card card-3">
                             <img src={barista} alt="Barista" />
                             <div className="profile-text">
                                 <p className="name">Green Cafe</p>
                                 <p className="job-title">Cafe in Bangkok</p>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                     <div className="bg-image">
                         <img className="line-mobile" src={line} alt="Line" />
@@ -57,7 +97,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </ motion.div>
     )
 }
 
