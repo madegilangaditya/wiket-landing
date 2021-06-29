@@ -6,35 +6,11 @@ import line from '../svg/header-line-phone-portrait.svg'
 import line2 from '../svg/header-line-desktop.svg'
 import pin1 from '../svg/pin-01.svg'
 import pin2 from '../svg/pin-02.svg'
-import { motion } from "framer-motion"
-import { useInView } from 'react-intersection-observer'
-import { useEffect } from 'react'
-import { useAnimation } from 'framer-motion'
 
-const Banner = () => {
 
-    const {ref, inView} = useInView({
-        threshold:0.2
-    })
-    const animation = useAnimation()
+const Banner = ({tref, motion, animation}) => {
 
-    useEffect(() => {
-        if (inView){
-            animation.start({
-                y: 0, 
-                opacity:1,
-                transition:{
-                    duration:1
-                }
-            })
-        }
-        if(!inView){
-            animation.start({
-                y: 100, 
-                opacity:0
-            })
-        }
-    }, [inView, animation])
+    
 
     return (
         <motion.div className="banner-section"
@@ -55,7 +31,7 @@ const Banner = () => {
                             transition={{ duration: 1 }}><strong>Wiket is the first business to business network</strong> which lets you connect to mind like people.</motion.p>
                     </div>
                 </div>
-                <div ref= {ref} className="col col-2">
+                <div ref={tref}  className="col col-2">
                     <motion.div className="big-card-profile" initial={{y:100, opacity:0}}
                             animate={{ y: 0, opacity:1 }}
                             transition={{ duration: 1 }}>

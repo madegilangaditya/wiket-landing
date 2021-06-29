@@ -1,28 +1,7 @@
 import logo from '../svg/wiket-logo.svg'
-import React, { useEffect } from 'react'
 
-const Header = () => {
-    const [scrolled, setScrolled] = React.useState(false)
-
-    const menuClick= () => {
-        document.querySelector('.menu').classList.toggle('active')
-    }
-
-    // Menu change background when scrolled
-    const handleScroll=() => {
-        const offset=window.scrollY;
-        if(offset > 100 ){
-            setScrolled(true);
-        }
-        else{
-            setScrolled(false);
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        document.querySelector('.mobile-menu-icon').addEventListener('click', menuClick);
-    },[]);
+const Header = ({scrolled}) => {
+    
 
     return (
         <header className={`App-header ${scrolled ? 'scrolled' : ''}`}>
